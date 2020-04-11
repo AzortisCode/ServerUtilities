@@ -35,10 +35,11 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
-        if(plugin.getSettingsManager().getSpawnSettings().getSpawnTeleportOnBelowY() && plugin.getSettingsManager().getSpawnSettings().isSpawnSet()){
+        if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getOnBelowY()
+                && plugin.getSettingsManager().getSettings().getSpawnSettings().isSpawnSet()){
             if(event.getTo() == null)return;
-            if(event.getTo().getY() < plugin.getSettingsManager().getSpawnSettings().getBelowY()){
-                event.getPlayer().teleport(plugin.getSettingsManager().getSpawnSettings().getLocation());
+            if(event.getTo().getY() < plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getBelowYValue()){
+                event.getPlayer().teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
             }
         }
     }

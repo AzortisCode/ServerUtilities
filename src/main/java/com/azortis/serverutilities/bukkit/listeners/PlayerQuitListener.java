@@ -36,8 +36,8 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        if(!plugin.getSettingsManager().getMessageSettings().getDisableQuitMessage()){
-            if(plugin.getSettingsManager().getMessageSettings().getUseCustomQuitMessage()){
+        if(!plugin.getSettingsManager().getSettings().getMessageSettings().getDisableQuitMessage()){
+            if(plugin.getSettingsManager().getSettings().getMessageSettings().getUseCustomQuitMessage()){
                 event.setQuitMessage("");
                 for (Player player : Bukkit.getOnlinePlayers()){
                     plugin.sendPlayerMessage(player, event.getPlayer(), "customQuitMessage");

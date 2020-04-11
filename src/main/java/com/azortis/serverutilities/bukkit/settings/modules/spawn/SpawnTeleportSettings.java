@@ -20,55 +20,55 @@ package com.azortis.serverutilities.bukkit.settings.modules.spawn;
 
 public class SpawnTeleportSettings {
 
-    private boolean firstJoin;
-    private boolean join;
-    private boolean respawn;
-    private BelowY belowY;
+    private boolean onFirstJoin;
+    private boolean onJoin;
+    private boolean onRespawn;
+    private BelowY onBelowY;
 
-    public boolean isFirstJoin() {
-        return firstJoin;
+    public boolean isOnFirstJoin() {
+        return onFirstJoin;
     }
 
-    public void setFirstJoin(boolean firstJoin) {
-        this.firstJoin = firstJoin;
+    public void setOnFirstJoin(boolean onFirstJoin) {
+        this.onFirstJoin = onFirstJoin;
     }
 
-    public boolean isJoin() {
-        return join;
+    public boolean getOnJoin() {
+        return onJoin;
     }
 
-    public void setJoin(boolean join) {
-        this.join = join;
+    public void setOnJoin(boolean onJoin) {
+        this.onJoin = onJoin;
     }
 
-    public boolean isRespawn() {
-        return respawn;
+    public boolean getOnRespawn() {
+        return onRespawn;
     }
 
-    public void setRespawn(boolean respawn) {
-        this.respawn = respawn;
+    public void setOnRespawn(boolean onRespawn) {
+        this.onRespawn = onRespawn;
     }
 
-    public boolean isBelowY(){
-        return belowY.isEnabled();
+    public boolean getOnBelowY(){
+        return onBelowY.isEnabled();
     }
 
-    public void setBelowY(boolean belowY){
-        this.belowY.setEnabled(belowY);
+    public void setOnBelowY(boolean onBelowY){
+        this.onBelowY.setEnabled(onBelowY);
     }
 
     public int getBelowYValue(){
-        return belowY.getYValue();
+        return onBelowY.getYValue();
     }
 
     public void setBelowYValue(int belowYLevel){
-        belowY.setYValue(belowYLevel);
+        onBelowY.setYValue(belowYLevel);
     }
 
     private static class BelowY{
 
         private boolean enabled;
-        private int yValue;
+        private int y;
 
         public boolean isEnabled() {
             return enabled;
@@ -79,11 +79,11 @@ public class SpawnTeleportSettings {
         }
 
         public int getYValue() {
-            return yValue;
+            return y;
         }
 
-        public void setYValue(int yLevel) {
-            yValue = yLevel;
+        public void setYValue(int yValue) {
+            y = yValue;
         }
     }
 

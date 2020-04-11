@@ -20,40 +20,40 @@ package com.azortis.serverutilities.bukkit.settings.modules;
 
 public class MessageSettings {
 
-    private boolean disableJoinMessages;
-    private boolean useCustomJoinMessages;
-    private boolean disableQuitMessages;
-    private boolean useCustomQuitMessages;
+    private boolean disableJoinMessage;
+    private boolean useCustomJoinMessage;
+    private boolean disableQuitMessage;
+    private boolean useCustomQuitMessage;
 
-    public boolean isDisableJoinMessages() {
-        return disableJoinMessages;
+    public boolean getDisableJoinMessage() {
+        return disableJoinMessage;
     }
 
-    public void setDisableJoinMessages(boolean disableJoinMessages) {
-        this.disableJoinMessages = disableJoinMessages;
+    public void setDisableJoinMessage(boolean disableJoinMessage) {
+        this.disableJoinMessage = disableJoinMessage;
     }
 
-    public boolean isUseCustomJoinMessages() {
-        return useCustomJoinMessages;
+    public boolean isUseCustomJoinMessage() {
+        return useCustomJoinMessage;
     }
 
-    public void setUseCustomJoinMessages(boolean useCustomJoinMessages) {
-        this.useCustomJoinMessages = useCustomJoinMessages;
+    public void setUseCustomJoinMessage(boolean useCustomJoinMessage) {
+        this.useCustomJoinMessage = useCustomJoinMessage;
     }
 
-    public boolean isDisableQuitMessages() {
-        return disableQuitMessages;
+    public boolean getDisableQuitMessage() {
+        return disableQuitMessage;
     }
 
-    public void setDisableQuitMessages(boolean disableQuitMessages) {
-        this.disableQuitMessages = disableQuitMessages;
+    public void setDisableQuitMessage(boolean disableQuitMessage) {
+        this.disableQuitMessage = disableQuitMessage;
     }
 
-    public boolean isUseCustomQuitMessages() {
-        return useCustomQuitMessages;
+    public boolean getUseCustomQuitMessage() {
+        return useCustomQuitMessage;
     }
 
-    public void setUseCustomQuitMessages(boolean useCustomQuitMessages) {
-        this.useCustomQuitMessages = useCustomQuitMessages;
+    public void setUseCustomQuitMessage(boolean useCustomQuitMessage) {
+        this.useCustomQuitMessage = useCustomQuitMessage;
     }
 }

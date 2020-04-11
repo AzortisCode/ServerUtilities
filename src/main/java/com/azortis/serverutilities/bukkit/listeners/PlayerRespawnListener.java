@@ -35,8 +35,8 @@ public class PlayerRespawnListener implements Listener {
 
     @EventHandler()
     public void onPlayerRespawn(PlayerRespawnEvent event){
-        if(plugin.getSettingsManager().getSpawnSettings().getSpawnTeleportOnRespawn()){
-            event.getPlayer().teleport(plugin.getSettingsManager().getSpawnSettings().getLocation());
+        if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getOnRespawn()){
+            event.getPlayer().teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
         }
     }
 

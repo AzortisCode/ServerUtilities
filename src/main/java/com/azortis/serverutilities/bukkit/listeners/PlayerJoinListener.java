@@ -37,14 +37,14 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        boolean isSpawnSet = plugin.getSettingsManager().getSpawnSettings().isSpawnSet();
-        if(plugin.getSettingsManager().getSpawnSettings().getSpawnTeleportOnJoin() && isSpawnSet){
-            player.teleport(plugin.getSettingsManager().getSpawnSettings().getLocation());
-        }else if(plugin.getSettingsManager().getSpawnSettings().getSpawnTeleportOnFirstJoin() && !event.getPlayer().hasPlayedBefore() && isSpawnSet){
-            player.teleport(plugin.getSettingsManager().getSpawnSettings().getLocation());
+        boolean isSpawnSet = plugin.getSettingsManager().getSettings().getSpawnSettings().isSpawnSet();
+        if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getOnJoin() && isSpawnSet){
+            player.teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
+        }else if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().isOnFirstJoin() && !event.getPlayer().hasPlayedBefore() && isSpawnSet){
+            player.teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
         }
-        if(!plugin.getSettingsManager().getMessageSettings().getDisableJoinMessage()){
-            if(plugin.getSettingsManager().getMessageSettings().getUseCustomJoinMessage()){
+        if(!plugin.getSettingsManager().getSettings().getMessageSettings().getDisableJoinMessage()){
+            if(plugin.getSettingsManager().getSettings().getMessageSettings().isUseCustomJoinMessage()){
                 event.setJoinMessage("");
                 for (Player player1 : Bukkit.getOnlinePlayers()){
                     plugin.sendPlayerMessage(player1, player, "customJoinMessage");

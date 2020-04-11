@@ -94,7 +94,7 @@ public final class ServerUtilities extends JavaPlugin {
     }
 
     public void sendPlayerMessage(Player receiver, Player placeholderPlayer, String messagePath){
-        String rawMessage = settingsManager.getMessageSettings().getMessage(messagePath);
+        String rawMessage = settingsManager.getMessages().getMessage(messagePath);
         String message = PlaceholderAPI.setPlaceholders(placeholderPlayer, rawMessage);
         if(message.startsWith("[JSON]")){
             String jsonString = message.replaceFirst("[JSON]", "").trim();

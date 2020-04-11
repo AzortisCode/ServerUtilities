@@ -10,12 +10,12 @@
       "pitch": 0
     },
     "spawnTeleportSettings": {
-      "firstJoin": true,
-      "join": true,
-      "respawn": false,
-      "belowY": {
+      "onFirstJoin": true,
+      "onJoin": true,
+      "onRespawn": false,
+      "onBelowY": {
         "enabled": true,
-        "yValue": 0
+        "y": 0
       }
     },
     "commandSettings": {

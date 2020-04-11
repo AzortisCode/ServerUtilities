@@ -18,7 +18,6 @@
 
 package com.azortis.serverutilities.bungee.commands;
 
-import com.azortis.serverutilities.bungee.settings.servercommands.ServerCommand;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -29,9 +28,9 @@ public class ServerSwitchCommand extends Command {
 
     private final String serverName;
 
-    public ServerSwitchCommand(ServerCommand serverCommand) {
-        super(serverCommand.getName(), serverCommand.getPermission(), String.valueOf(serverCommand.getAliases()));
-        this.serverName = serverCommand.getServer();
+    public ServerSwitchCommand(com.azortis.serverutilities.bungee.settings.serverswitchcommands.ServerSwitchCommand serverSwitchCommand) {
+        super(serverSwitchCommand.getName(), serverSwitchCommand.getPermission(), String.valueOf(serverSwitchCommand.getAliases()));
+        this.serverName = serverSwitchCommand.getServer();
     }
 
     @Override

@@ -45,7 +45,7 @@ public class MainCommand implements ICommandExecutor {
                     .setPermission(PermissionManager.Permission.ADMIN.getPermissionNode())
                     .setPlugin(plugin)
                     .setExecutor(this).build();
-            CommandInjector.injectCommand("networkutilities", command, false);
+            CommandInjector.injectCommand("serverutilities", command, false);
         }
     }
 
@@ -55,7 +55,7 @@ public class MainCommand implements ICommandExecutor {
             Player player = (Player)commandSender;
             if(plugin.getPermissionManager().hasPermission(player, PermissionManager.Permission.ADMIN)){
                 if(args.length == 0){
-                    player.sendMessage(ChatColor.RED + "NetworkUtilities " + ChatColor.GRAY + "made by " + ChatColor.RED + "Azortis");
+                    player.sendMessage(ChatColor.RED + "ServerUtilities " + ChatColor.GRAY + "made by " + ChatColor.RED + "Azortis");
                     return true;
                 }else if(args.length == 1 && args[0].equals("reload")){
                     plugin.getSettingsManager().reloadSettingsFile();

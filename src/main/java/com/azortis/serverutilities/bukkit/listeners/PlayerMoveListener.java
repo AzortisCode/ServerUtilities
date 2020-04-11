@@ -26,7 +26,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerMoveListener implements Listener {
 
-    private ServerUtilities plugin;
+    private final ServerUtilities plugin;
 
     public PlayerMoveListener(ServerUtilities plugin){
         this.plugin = plugin;

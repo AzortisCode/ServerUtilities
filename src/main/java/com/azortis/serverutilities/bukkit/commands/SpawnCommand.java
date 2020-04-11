@@ -46,7 +46,7 @@ public class SpawnCommand implements ICommandExecutor{
                     .setPermission(PermissionManager.Permission.SPAWN.getPermissionNode())
                     .setPlugin(plugin)
                     .setExecutor(this).build();
-            CommandInjector.injectCommand("networkutilities", command, false);
+            CommandInjector.injectCommand("serverutilities", command, false);
         }
     }
 

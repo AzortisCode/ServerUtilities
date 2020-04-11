@@ -27,7 +27,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
 
-    private ServerUtilities plugin;
+    private final ServerUtilities plugin;
 
     public PlayerJoinListener(ServerUtilities plugin){
         this.plugin = plugin;

@@ -16,21 +16,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bukkit;
+package com.azortis.serverutilities.common;
 
 public enum PluginVersion {
-    v0_1("1.0", 10, "1", "1");
+    v0_1("0.1", 10, "1", "1", "1"),
+    v0_2("0.2", 20, "1", "1", "1");
 
-    private String versionString;
-    private int versionNumber;
-    private String settingsFileVersion;
-    private String messageFileVersion;
+    private final String versionString;
+    private final int versionNumber;
+    private final String settingsFileVersion;
+    private final String messageFileVersion;
+    private final String proxySettingsFileVersion;
 
-    PluginVersion(String versionString, int versionNumber, String settingsFileVersion, String messageFileVersion){
+    PluginVersion(String versionString, int versionNumber, String settingsFileVersion, String messageFileVersion, String proxySettingsFileVersion){
         this.versionString = versionString;
         this.versionNumber = versionNumber;
         this.settingsFileVersion = settingsFileVersion;
         this.messageFileVersion = messageFileVersion;
+        this.proxySettingsFileVersion = proxySettingsFileVersion;
     }
 
     public boolean isNewerThen(PluginVersion pluginVersion){
@@ -55,6 +58,10 @@ public enum PluginVersion {
 
     public String getMessageFileVersion() {
         return messageFileVersion;
+    }
+
+    public String getProxySettingsFileVersion() {
+        return proxySettingsFileVersion;
     }
 
     public static PluginVersion getVersionFromString(String versionString){

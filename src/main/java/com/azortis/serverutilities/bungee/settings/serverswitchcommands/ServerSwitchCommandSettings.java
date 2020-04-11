@@ -16,14 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bungee.settings.servercommands;
+package com.azortis.serverutilities.bungee.settings.serverswitchcommands;
 
 import java.util.ArrayList;
 
-public class ServerCommandSettings {
+public class ServerSwitchCommandSettings {
 
     private boolean enabled;
-    private ArrayList<ServerCommand> commands;
+    private ArrayList<ServerSwitchCommand> commands;
 
     public boolean isEnabled() {
         return enabled;
@@ -33,20 +33,20 @@ public class ServerCommandSettings {
         this.enabled = enabled;
     }
 
-    public ArrayList<ServerCommand> getCommands() {
+    public ArrayList<ServerSwitchCommand> getCommands() {
         return commands;
     }
 
-    public void setCommands(ArrayList<ServerCommand> commands) {
+    public void setCommands(ArrayList<ServerSwitchCommand> commands) {
         this.commands = commands;
     }
 
-    public void addCommand(ServerCommand serverCommand){
-        commands.add(serverCommand);
+    public void addCommand(ServerSwitchCommand serverSwitchCommand){
+        commands.add(serverSwitchCommand);
     }
 
-    public void removeCommand(ServerCommand serverCommand){
-        commands.remove(serverCommand);
+    public void removeCommand(ServerSwitchCommand serverSwitchCommand){
+        commands.remove(serverSwitchCommand);
     }
 
 }

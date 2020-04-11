@@ -26,7 +26,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class PlayerRespawnListener implements Listener {
 
-    private ServerUtilities plugin;
+    private final ServerUtilities plugin;
 
     public PlayerRespawnListener(ServerUtilities plugin){
         this.plugin = plugin;

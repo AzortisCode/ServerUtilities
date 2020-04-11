@@ -8,5 +8,6 @@
     "pluginReloaded": "&7Configuration files have been reloaded, restart the server for command settings changes to apply!",
     "customJoinMessage": "&8[&a+&8] %player_name%",
     "customQuitMessage": "&8[&c-&8] %player_name%"
-  }
+  },
+  "fileVersion": "1"
 }

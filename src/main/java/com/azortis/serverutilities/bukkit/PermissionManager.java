@@ -23,8 +23,8 @@ import org.bukkit.entity.Player;
 public class PermissionManager {
 
     public boolean hasPermission(Player player, Permission permission) {
-        if (player.isOp() || player.hasPermission("networkutilities." + Permission.ADMIN)) return true;
-        return player.hasPermission("networkutilities." + permission);
+        if (player.isOp() || player.hasPermission("serverutilities." + Permission.ADMIN)) return true;
+        return player.hasPermission(permission.getPermissionNode());
     }
 
     public enum Permission {
@@ -32,14 +32,14 @@ public class PermissionManager {
         SPAWN_SET("spawn.set"),
         ADMIN("admin");
 
-        private String permissionNode;
+        private final String permissionNode;
 
         Permission(String permissionNode) {
             this.permissionNode = permissionNode;
         }
 
         public String getPermissionNode() {
-            return "networkutilities." + permissionNode;
+            return "serverutilities." + permissionNode;
         }
 
     }

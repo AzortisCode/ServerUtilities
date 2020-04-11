@@ -27,7 +27,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerQuitListener implements Listener {
 
-    private ServerUtilities plugin;
+    private final ServerUtilities plugin;
 
     public PlayerQuitListener(ServerUtilities plugin){
         this.plugin = plugin;

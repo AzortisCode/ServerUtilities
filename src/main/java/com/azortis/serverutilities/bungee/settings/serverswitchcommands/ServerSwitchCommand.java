@@ -16,11 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bungee.settings.servercommands;
+package com.azortis.serverutilities.bungee.settings.serverswitchcommands;
 
 import java.util.ArrayList;
 
-public class ServerCommand {
+public class ServerSwitchCommand {
 
     private String name;
     private String permission;

@@ -47,6 +47,9 @@ public class SettingsManager {
         }catch (FileNotFoundException ex){
             ex.printStackTrace();
         }
+        if(!plugin.getPluginVersion().getProxySettingsFileVersion().equals(proxySettings.getFileVersion())){
+            plugin.getLogger().severe("You're settingsfile is out of date! Please update otherwise it will break!");
+        }
     }
 
     public ProxySettings getProxySettings() {

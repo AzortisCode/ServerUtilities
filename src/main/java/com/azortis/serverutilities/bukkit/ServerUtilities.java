@@ -25,6 +25,8 @@ import com.azortis.serverutilities.bukkit.listeners.PlayerMoveListener;
 import com.azortis.serverutilities.bukkit.listeners.PlayerQuitListener;
 import com.azortis.serverutilities.bukkit.listeners.PlayerRespawnListener;
 import com.azortis.serverutilities.bukkit.settings.SettingsManager;
+import com.azortis.serverutilities.common.PluginVersion;
+import com.azortis.serverutilities.common.UpdateChecker;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
@@ -35,6 +37,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ServerUtilities extends JavaPlugin {
 
+    private PluginVersion pluginVersion;
     private Metrics metrics;
     private PermissionManager permissionManager;
     private SettingsManager settingsManager;
@@ -46,16 +49,36 @@ public final class ServerUtilities extends JavaPlugin {
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
         }
+        // Check for updates and store the pluginVersion.
+        this.pluginVersion = PluginVersion.getVersionFromString(this.getDescription().getVersion());
+        UpdateChecker updateChecker = new UpdateChecker(pluginVersion);
+        if(updateChecker.hasFailed()){
+            getLogger().severe("Failed to check for updates!");
+        }else if (updateChecker.isUpdateAvailable()){
+            getLogger().info("A new version(v" + updateChecker.getSpigotVersion().getVersionString() + ") is available on spigot!");
+            getLogger().info("You can download it here: https://www.spigotmc.org/resources/77011/");
+            new UpdateNotifier(this, updateChecker);
+        }else if(updateChecker.isUnreleased()){
+            getLogger().warning("You're using an unreleased version(v" + pluginVersion.getVersionString() + "). Please proceed with caution.");
+            new UpdateNotifier(this, updateChecker);
+        }
+
+        // Load the managers
         this.metrics = new Metrics(this, 7085);
         this.settingsManager = new SettingsManager(this);
         this.permissionManager = new PermissionManager();
 
+        // Load the commands and event classes and let them register themselves.
         new MainCommand(this);
         new SpawnCommand(this);
         new PlayerJoinListener(this);
         new PlayerQuitListener(this);
         new PlayerMoveListener(this);
         new PlayerRespawnListener(this);
+    }
+
+    public PluginVersion getPluginVersion() {
+        return pluginVersion;
     }
 
     public Metrics getMetrics() {
@@ -73,7 +96,7 @@ public final class ServerUtilities extends JavaPlugin {
     public void sendPlayerMessage(Player receiver, Player placeholderPlayer, String messagePath){
         String rawMessage = settingsManager.getMessageSettings().getMessage(messagePath);
         String message = PlaceholderAPI.setPlaceholders(placeholderPlayer, rawMessage);
-        if(message.startsWith("[JSON]") && Bukkit.getServer().getPluginManager().isPluginEnabled("ProtocolLib")){
+        if(message.startsWith("[JSON]")){
             String jsonString = message.replaceFirst("[JSON]", "").trim();
             BaseComponent[] baseComponents = ComponentSerializer.parse(jsonString);
             receiver.spigot().sendMessage(baseComponents);

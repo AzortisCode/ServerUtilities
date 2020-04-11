@@ -16,28 +16,17 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bungee.settings;
+package com.azortis.serverutilities.bukkit.settings;
 
-import com.azortis.serverutilities.bungee.settings.serverswitchcommands.ServerSwitchCommandSettings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.Serializable;
 
-public class ProxySettings implements Serializable {
+public class Settings implements Serializable {
 
     private final transient Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    private ServerSwitchCommandSettings serverSwitchCommandSettings;
-    private String fileVersion;
-
-    public ServerSwitchCommandSettings getServerCommandSettings() {
-        return serverSwitchCommandSettings;
-    }
-
-    public String getFileVersion() {
-        return fileVersion;
-    }
 
     @Override
     public String toString() {

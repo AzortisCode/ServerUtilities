@@ -1,5 +1,5 @@
 {
-  "serverCommandSettings": {
+  "serverSwitchCommandSettings": {
     "enabled": true,
     "commands": [
       {
@@ -9,5 +9,6 @@
         "server": "lobby"
       }
     ]
-  }
+  },
+  "fileVersion": "1"
 }

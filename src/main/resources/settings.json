@@ -36,11 +36,12 @@
   },
   "commandSettings":{
     "enabled": true,
-    "name": "networkutilities",
+    "name": "serverutilities",
     "description": "The main command of network utilities",
-    "usage": "&c/networkutilities [reload]",
+    "usage": "&c/serverutilities [reload]",
     "aliases": [
-      "nutils"
+      "sutils"
     ]
-  }
+  },
+  "fileVersion": "1"
 }

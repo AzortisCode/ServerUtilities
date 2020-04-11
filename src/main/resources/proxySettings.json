@@ -1,0 +1,13 @@
+{
+  "serverCommandSettings": {
+    "enabled": true,
+    "commands": [
+      {
+        "name": "lobby",
+        "permission": "networkutilities.lobby",
+        "aliases": [],
+        "server": "lobby"
+      }
+    ]
+  }
+}

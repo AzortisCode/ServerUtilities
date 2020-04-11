@@ -1,0 +1,4 @@
+name: ServerUtilities
+main: com.azortis.serverutilities.bungee.ServerUtilitiesProxy
+author: YourPalJake
+version: 0.2

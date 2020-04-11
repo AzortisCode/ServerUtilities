@@ -1,0 +1,6 @@
+name: ServerUtilities
+author: YourPalJake
+main: com.azortis.Serverutilities.bukkit.ServerUtilities
+version: 0.2
+api-version: 1.15
+depend: [PlaceholderAPI]

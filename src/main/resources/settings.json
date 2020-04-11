@@ -1,0 +1,46 @@
+{
+  "spawnSettings": {
+    "enabled": true,
+    "location": {
+      "world": "",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "yaw": 0,
+      "pitch": 0
+    },
+    "spawnTeleport": {
+      "firstJoin": true,
+      "join": true,
+      "respawn": false,
+      "below-y": {
+        "enabled": true,
+        "y-value": 0
+      }
+    },
+    "commandSettings": {
+      "enabled": true,
+      "name": "spawn",
+      "description": "To teleport to spawn",
+      "usage": "&c/spawn [set]",
+      "aliases": [
+        "setspawn -f set"
+      ]
+    }
+  },
+  "messageSettings": {
+    "disableJoinMessage": false,
+    "useCustomJoinMessage": true,
+    "disableQuitMessage": false,
+    "useCustomQuitMessage": true
+  },
+  "commandSettings":{
+    "enabled": true,
+    "name": "networkutilities",
+    "description": "The main command of network utilities",
+    "usage": "&c/networkutilities [reload]",
+    "aliases": [
+      "nutils"
+    ]
+  }
+}

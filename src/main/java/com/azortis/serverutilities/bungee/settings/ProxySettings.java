@@ -18,7 +18,7 @@
 
 package com.azortis.serverutilities.bungee.settings;
 
-import com.azortis.serverutilities.bungee.settings.serverswitchcommands.ServerSwitchCommandSettings;
+import com.azortis.serverutilities.bungee.settings.modules.ServerSwitchCommandSettings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -16,16 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bungee.settings.serverswitchcommands;
+package com.azortis.serverutilities.bukkit.settings.modules;
 
 import java.util.ArrayList;
 
-public class ServerSwitchCommand {
+public class CommandSettings {
 
+    private boolean enabled;
     private String name;
-    private String permission;
+    private String description;
+    private String usage;
     private ArrayList<String> aliases;
-    private String server;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getName() {
         return name;
@@ -35,12 +44,20 @@ public class ServerSwitchCommand {
         this.name = name;
     }
 
-    public String getPermission() {
-        return permission;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUsage() {
+        return usage;
+    }
+
+    public void setUsage(String usage) {
+        this.usage = usage;
     }
 
     public ArrayList<String> getAliases() {
@@ -57,14 +74,6 @@ public class ServerSwitchCommand {
 
     public void removeAlias(String alias){
         aliases.remove(alias);
-    }
-
-    public String getServer() {
-        return server;
-    }
-
-    public void setServer(String server) {
-        this.server = server;
     }
 
 }

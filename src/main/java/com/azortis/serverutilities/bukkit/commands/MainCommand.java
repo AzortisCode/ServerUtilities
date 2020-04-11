@@ -24,7 +24,7 @@ import com.azortis.azortislib.command.builders.CommandBuilder;
 import com.azortis.azortislib.command.executors.ICommandExecutor;
 import com.azortis.serverutilities.bukkit.ServerUtilities;
 import com.azortis.serverutilities.bukkit.PermissionManager;
-import com.azortis.serverutilities.bukkit.settings.wrappers.CommandSettings;
+import com.azortis.serverutilities.bukkit.settings.modules.CommandSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -35,8 +35,8 @@ public class MainCommand implements ICommandExecutor {
 
     public MainCommand(ServerUtilities plugin){
         this.plugin = plugin;
-        CommandSettings commandSettings = plugin.getSettingsManager().getCommandSettings();
-        if(commandSettings.getEnabled()) {
+        CommandSettings commandSettings = plugin.getSettingsManager().getSettings().getCommandSettings();
+        if(commandSettings.isEnabled()) {
             Command command = new CommandBuilder()
                     .setName(commandSettings.getName())
                     .setDescription(commandSettings.getDescription())

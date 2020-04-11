@@ -19,9 +19,6 @@
 package com.azortis.serverutilities.bukkit.settings;
 
 import com.azortis.serverutilities.bukkit.ServerUtilities;
-import com.azortis.serverutilities.bukkit.settings.wrappers.CommandSettings;
-import com.azortis.serverutilities.bukkit.settings.wrappers.MessageSettings;
-import com.azortis.serverutilities.bukkit.settings.wrappers.SpawnSettings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -30,22 +27,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-import java.util.Map;
 
 @SuppressWarnings("all")
 public class SettingsManager {
 
-    private final ServerUtilities plugin;
+    private Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
     private File settingsFile;
     private File messageFile;
-
-    private Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-    private Map<String, Object> settingsMap;
-    private Map<String, Object> messageMap;
-    private boolean filesUpToDate = true;
+    private Settings settings;
+    private Messages messages;
 
     public SettingsManager(ServerUtilities plugin) {
-        this.plugin = plugin;
         plugin.getLogger().info("Loading settings...");
         if (plugin.getDataFolder().exists()) plugin.getDataFolder().mkdir();
         settingsFile = new File(plugin.getDataFolder(), "settings.json");
@@ -59,55 +52,50 @@ public class SettingsManager {
             plugin.saveResource(messageFile.getName(), false);
         }
         try {
-            settingsMap = gson.fromJson(new FileReader(settingsFile), Map.class);
-            messageMap = gson.fromJson(new FileReader(messageFile), Map.class);
+            settings = gson.fromJson(new FileReader(settingsFile), Settings.class);
+            messages = gson.fromJson(new FileReader(messageFile), Messages.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        /*//Check if settingsFile is up to date!
-        String settingsFileVersion = (String) settingsMap.get("fileVersion");
-        if(!plugin.getUpdateChecker().getPluginVersion().getSettingsFileVersion().equals(settingsFileVersion)){
-            plugin.getLogger().severe("Settings file is outdated, Please update it!");
-            filesUpToDate = false;
-        }
-        //Check if messageFile is up to date!
-        String messageFileVersion = (String) settingsMap.get("fileVersion");
-        if(!plugin.getUpdateChecker().getPluginVersion().getMessageFileVersion().equals(messageFileVersion)){
-            plugin.getLogger().severe("Message file is outdated, Please update it!");
-            filesUpToDate = false;
-        }
-        if(!filesUpToDate){
-            plugin.getLogger().severe("Disabling plugin...");
-            Bukkit.getPluginManager().disablePlugin(plugin);
-        }*/
     }
 
-    public boolean areFilesUpToDate() {
-        return filesUpToDate;
+    public Settings getSettings() {
+        return settings;
     }
 
-    public void saveSettingsFile() {
-        try {
-            final String json = gson.toJson(settingsMap);
+    public File getSettingsFile() {
+        return settingsFile;
+    }
+
+    public void saveSettings() {
+        try{
+            final String json = gson.toJson(settings);
             settingsFile.delete();
             Files.write(settingsFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-        } catch (IOException e) {
-            e.printStackTrace();
+        }catch (IOException ex){
+            ex.printStackTrace();
         }
     }
 
     public void reloadSettingsFile() {
         try {
-            settingsMap = gson.fromJson(new FileReader(settingsFile), Map.class);
+            settings = gson.fromJson(new FileReader(settingsFile), Settings.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public Messages getMessages() {
+        return messages;
+    }
+
+    public File getMessageFile() {
+        return messageFile;
+    }
+
     public void saveMessageFile() {
         try {
-            final String json = gson.toJson(messageMap);
+            final String json = gson.toJson(messages);
             messageFile.delete();
             Files.write(messageFile.toPath(), json.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         } catch (IOException e) {
@@ -117,30 +105,10 @@ public class SettingsManager {
 
     public void reloadMessageFile() {
         try {
-            messageMap = gson.fromJson(new FileReader(messageFile), Map.class);
+            messages = gson.fromJson(new FileReader(messageFile), Messages.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public MessageSettings getMessageSettings(){
-        return new MessageSettings(this, settingsMap.get("messageSettings"), messageMap.get("messages"));
-    }
-
-    public SpawnSettings getSpawnSettings(){
-        return new SpawnSettings(this, settingsMap.get("spawnSettings"));
-    }
-
-    public CommandSettings getCommandSettings(){
-        return new CommandSettings(this, settingsMap.get("commandSettings"));
-    }
-
-    public Map<String, Object> getSettingsMap() {
-        return settingsMap;
-    }
-
-    public Map<String, Object> getMessageMap() {
-        return messageMap;
     }
 
 }

@@ -16,37 +16,36 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bungee.settings.serverswitchcommands;
+package com.azortis.serverutilities.bukkit.settings;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-public class ServerSwitchCommandSettings {
+import java.io.Serializable;
+import java.util.HashMap;
 
-    private boolean enabled;
-    private ArrayList<ServerSwitchCommand> commands;
+public class Messages implements Serializable {
 
-    public boolean isEnabled() {
-        return enabled;
+    private final transient Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
+    private HashMap<String, String> messages;
+    private String fileVersion;
+
+    public HashMap<String, String> getMessages() {
+        return messages;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public String getMessage(String message){
+        return messages.get(message);
     }
 
-    public ArrayList<ServerSwitchCommand> getCommands() {
-        return commands;
+    public String getFileVersion() {
+        return fileVersion;
     }
 
-    public void setCommands(ArrayList<ServerSwitchCommand> commands) {
-        this.commands = commands;
-    }
-
-    public void addCommand(ServerSwitchCommand serverSwitchCommand){
-        commands.add(serverSwitchCommand);
-    }
-
-    public void removeCommand(ServerSwitchCommand serverSwitchCommand){
-        commands.remove(serverSwitchCommand);
+    @Override
+    public String toString() {
+        return gson.toJson(this);
     }
 
 }

@@ -18,8 +18,9 @@
 
 package com.azortis.serverutilities.bungee;
 
+import com.azortis.serverutilities.bungee.commands.ServerSwitchCommand;
+import com.azortis.serverutilities.bungee.settings.modules.ServerSwitchCommandSettings;
 import com.azortis.serverutilities.bungee.settings.SettingsManager;
-import com.azortis.serverutilities.bungee.settings.serverswitchcommands.ServerSwitchCommand;
 import com.azortis.serverutilities.common.PluginVersion;
 import com.azortis.serverutilities.common.UpdateChecker;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -45,8 +46,8 @@ public final class ServerUtilitiesProxy extends Plugin {
         this.metrics = new Metrics(this, 7085);
         this.settingsManager = new SettingsManager(this);
         if(settingsManager.getProxySettings().getServerCommandSettings().isEnabled()){
-            for (ServerSwitchCommand serverSwitchCommand : settingsManager.getProxySettings().getServerCommandSettings().getCommands()){
-                getProxy().getPluginManager().registerCommand(this, new com.azortis.serverutilities.bungee.commands.ServerSwitchCommand(serverSwitchCommand));
+            for (ServerSwitchCommandSettings.Command serverSwitchCommand : settingsManager.getProxySettings().getServerCommandSettings().getCommands()){
+                getProxy().getPluginManager().registerCommand(this, new ServerSwitchCommand(serverSwitchCommand));
             }
         }
     }

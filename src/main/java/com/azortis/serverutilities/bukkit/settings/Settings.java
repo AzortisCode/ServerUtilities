@@ -18,6 +18,9 @@
 
 package com.azortis.serverutilities.bukkit.settings;
 
+import com.azortis.serverutilities.bukkit.settings.modules.CommandSettings;
+import com.azortis.serverutilities.bukkit.settings.modules.MessageSettings;
+import com.azortis.serverutilities.bukkit.settings.modules.spawn.SpawnSettings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,9 +30,30 @@ public class Settings implements Serializable {
 
     private final transient Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
+    private SpawnSettings spawnSettings;
+    private MessageSettings messageSettings;
+    private CommandSettings commandSettings;
+    private String fileVersion;
+
+    public SpawnSettings getSpawnSettings() {
+        return spawnSettings;
+    }
+
+    public CommandSettings getCommandSettings() {
+        return commandSettings;
+    }
+
+    public MessageSettings getMessageSettings() {
+        return messageSettings;
+    }
+
+    public String getFileVersion() {
+        return fileVersion;
+    }
 
     @Override
     public String toString() {
         return gson.toJson(this);
     }
+
 }

@@ -24,7 +24,7 @@ import com.azortis.azortislib.command.builders.CommandBuilder;
 import com.azortis.azortislib.command.executors.ICommandExecutor;
 import com.azortis.serverutilities.bukkit.ServerUtilities;
 import com.azortis.serverutilities.bukkit.PermissionManager;
-import com.azortis.serverutilities.bukkit.settings.wrappers.SpawnSettings;
+import com.azortis.serverutilities.bukkit.settings.modules.CommandSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
@@ -36,7 +36,7 @@ public class SpawnCommand implements ICommandExecutor{
 
     public SpawnCommand(ServerUtilities plugin){
         this.plugin = plugin;
-        SpawnSettings.CommandSettings commandSettings = plugin.getSettingsManager().getSpawnSettings().getCommandSettings();
+        CommandSettings commandSettings = plugin.getSettingsManager().getSettings().getSpawnSettings().getCommandSettings();
         if(commandSettings.isEnabled()) {
             Command command = new CommandBuilder()
                     .setName(commandSettings.getName())
@@ -65,8 +65,8 @@ public class SpawnCommand implements ICommandExecutor{
             }
             if(args.length == 0){
                 if(plugin.getPermissionManager().hasPermission(player, PermissionManager.Permission.SPAWN)){
-                    if(plugin.getSettingsManager().getSpawnSettings().isSpawnSet()) {
-                        player.teleport(plugin.getSettingsManager().getSpawnSettings().getLocation());
+                    if(plugin.getSettingsManager().getSettings().getSpawnSettings().isSpawnSet()) {
+                        player.teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
                         plugin.sendPlayerMessage(player, player, "teleportedToSpawn");
                         return true;
                     }else{
@@ -95,8 +95,8 @@ public class SpawnCommand implements ICommandExecutor{
 
     private void setSpawn(Player player){
         Location location = player.getLocation();
-        plugin.getSettingsManager().getSpawnSettings().setLocation(location);
-        plugin.getSettingsManager().saveSettingsFile();
+        plugin.getSettingsManager().getSettings().getSpawnSettings().setSpawnLocation(location);
+        plugin.getSettingsManager().saveSettings();
         plugin.getSettingsManager().reloadSettingsFile();
         plugin.sendPlayerMessage(player, player, "spawnSet");
     }

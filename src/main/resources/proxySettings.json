@@ -4,7 +4,7 @@
     "commands": [
       {
         "name": "lobby",
-        "permission": "networkutilities.lobby",
+        "permission": "serverutilities.server.lobby",
         "aliases": [],
         "server": "lobby"
       }

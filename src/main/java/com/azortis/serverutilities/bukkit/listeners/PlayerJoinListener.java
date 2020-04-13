@@ -34,7 +34,7 @@ public class PlayerJoinListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         boolean isSpawnSet = plugin.getSettingsManager().getSettings().getSpawnSettings().isSpawnSet();
@@ -53,6 +53,6 @@ public class PlayerJoinListener implements Listener {
         }else{
             event.setJoinMessage("");
         }
-    }
+    }*/
 
 }

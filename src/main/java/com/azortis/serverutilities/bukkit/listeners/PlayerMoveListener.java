@@ -33,7 +33,7 @@ public class PlayerMoveListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
         if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getOnBelowY()
                 && plugin.getSettingsManager().getSettings().getSpawnSettings().isSpawnSet()){
@@ -42,5 +42,5 @@ public class PlayerMoveListener implements Listener {
                 event.getPlayer().teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
             }
         }
-    }
+    }*/
 }

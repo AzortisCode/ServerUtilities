@@ -27,8 +27,14 @@ public class PermissionManager {
         return player.hasPermission(permission.getPermissionNode());
     }
 
+    public boolean hasPermissionForSpawn(Player player, String spawnName){
+        if (player.isOp() || player.hasPermission("serverutilities." + Permission.ADMIN)) return true;
+        return player.hasPermission(Permission.SPAWN.getPermissionNode() + "." + spawnName);
+    }
+
     public enum Permission {
         SPAWN("spawn"),
+        SPAWN_OTHER("spawn.other"),
         SPAWN_SET("spawn.set"),
         ADMIN("admin");
 

@@ -1,5 +1,5 @@
 /*
- * A handy set of utilities for your Minecraft servers
+ * A handy set of utilities for your Minecraft server
  *     Copyright (C) 2020  Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
@@ -16,36 +16,50 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bukkit.listeners;
+package com.azortis.serverutilities.bukkit.modules.spawn;
 
 import com.azortis.serverutilities.bukkit.ServerUtilities;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class PlayerQuitListener implements Listener {
+public class SpawnListener implements Listener {
 
-    private final ServerUtilities plugin;
+    private ServerUtilities plugin;
+    private SpawnModule spawnModule;
 
-    public PlayerQuitListener(ServerUtilities plugin){
+    SpawnListener(ServerUtilities plugin, SpawnModule spawnModule){
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        this.spawnModule = spawnModule;
     }
 
-    /*@EventHandler
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+
+    }
+
+    @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        if(!plugin.getSettingsManager().getSettings().getMessageSettings().getDisableQuitMessage()){
-            if(plugin.getSettingsManager().getSettings().getMessageSettings().getUseCustomQuitMessage()){
-                event.setQuitMessage("");
-                for (Player player : Bukkit.getOnlinePlayers()){
-                    plugin.sendPlayerMessage(player, event.getPlayer(), "customQuitMessage");
-                }
-            }
-        }else {
-            event.setQuitMessage("");
-        }
-    }*/
+
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event){
+
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event){
+
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent event){
+
+    }
 
 }

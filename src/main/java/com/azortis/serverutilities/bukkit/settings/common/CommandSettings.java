@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bukkit.settings.modules;
+package com.azortis.serverutilities.bukkit.settings.common;
 
 import java.util.ArrayList;
 

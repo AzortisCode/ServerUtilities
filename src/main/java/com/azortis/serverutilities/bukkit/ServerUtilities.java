@@ -19,7 +19,6 @@
 package com.azortis.serverutilities.bukkit;
 
 import com.azortis.serverutilities.bukkit.commands.MainCommand;
-import com.azortis.serverutilities.bukkit.commands.SpawnCommand;
 import com.azortis.serverutilities.bukkit.listeners.PlayerJoinListener;
 import com.azortis.serverutilities.bukkit.listeners.PlayerMoveListener;
 import com.azortis.serverutilities.bukkit.listeners.PlayerQuitListener;
@@ -34,6 +33,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 public final class ServerUtilities extends JavaPlugin {
 
@@ -70,7 +71,6 @@ public final class ServerUtilities extends JavaPlugin {
 
         // Load the commands and event classes and let them register themselves.
         new MainCommand(this);
-        new SpawnCommand(this);
         new PlayerJoinListener(this);
         new PlayerQuitListener(this);
         new PlayerMoveListener(this);
@@ -93,9 +93,14 @@ public final class ServerUtilities extends JavaPlugin {
         return permissionManager;
     }
 
-    public void sendPlayerMessage(Player receiver, Player placeholderPlayer, String messagePath){
+    public void sendPlayerMessage(Player receiver, Player placeholderPlayer, String messagePath, HashMap<String, String> commandPlaceholders){
         String rawMessage = settingsManager.getMessages().getMessage(messagePath);
         String message = PlaceholderAPI.setPlaceholders(placeholderPlayer, rawMessage);
+        if(commandPlaceholders != null){
+            for (String commandPlaceholder : commandPlaceholders.keySet()){
+                message = message.replaceAll(commandPlaceholder, commandPlaceholders.get(commandPlaceholder));
+            }
+        }
         if(message.startsWith("[JSON]")){
             String jsonString = message.replaceFirst("[JSON]", "").trim();
             BaseComponent[] baseComponents = ComponentSerializer.parse(jsonString);

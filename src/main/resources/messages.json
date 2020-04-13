@@ -2,9 +2,14 @@
   "messages": {
     "noPermission": "&cYou have no permission to perform this command!",
     "invalidUsage": "&cInvalid usage!",
-    "spawnSet": "&7You've set the spawn",
+    "invalidTarget": "&cInvalid target!",
+    "spawnSet": "&7You've set the spawn.",
+    "spawnSetName": "&7You've set the spawn &c{spawnName}",
     "spawnNotSet": "&cSpawn has not been set!",
-    "teleportedToSpawn": "&7You've been teleported to spawn!",
+    "teleportingToSpawn": "&7Teleporting to spawn, please do not move for &c{timeout_time} &7seconds!",
+    "teleportedToSpawn": "&7You've teleported to spawn!",
+    "teleportedToSpawnByOther": "&7You've been teleported to spawn!",
+    "teleportedToSpawnOther": "&7You've teleported &c%player_name% &7to spawn!",
     "pluginReloaded": "&7Configuration files have been reloaded, restart the server for command settings changes to apply!",
     "customJoinMessage": "&8[&a+&8] %player_name%",
     "customQuitMessage": "&8[&c-&8] %player_name%"

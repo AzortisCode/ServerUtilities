@@ -16,44 +16,33 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bukkit.settings;
+package com.azortis.serverutilities.bukkit.modules.spawn.settings;
 
-import com.azortis.serverutilities.bukkit.modules.spawn.settings.SpawnSettings;
-import com.azortis.serverutilities.bukkit.settings.common.CommandSettings;
-import com.azortis.serverutilities.bukkit.settings.modules.MessageSettings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Settings implements Serializable {
+public class SpawnLocations implements Serializable {
 
     private final transient Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    private ArrayList<SpawnLocation> spawnLocations;
 
-    private SpawnSettings spawnSettings;
-    private MessageSettings messageSettings;
-    private CommandSettings commandSettings;
-    private String fileVersion;
-
-    public SpawnSettings getSpawnSettings() {
-        return spawnSettings;
+    public ArrayList<SpawnLocation> getLocations() {
+        return spawnLocations;
     }
 
-    public CommandSettings getCommandSettings() {
-        return commandSettings;
+    public void addLocation(SpawnLocation spawnLocation){
+        spawnLocations.add(spawnLocation);
     }
 
-    public MessageSettings getMessageSettings() {
-        return messageSettings;
-    }
-
-    public String getFileVersion() {
-        return fileVersion;
+    public void removeLocation(SpawnLocation spawnLocation){
+        spawnLocations.remove(spawnLocation);
     }
 
     @Override
     public String toString() {
         return gson.toJson(this);
     }
-
 }

@@ -24,7 +24,7 @@ import com.azortis.azortislib.command.builders.CommandBuilder;
 import com.azortis.azortislib.command.executors.ICommandExecutor;
 import com.azortis.serverutilities.bukkit.ServerUtilities;
 import com.azortis.serverutilities.bukkit.PermissionManager;
-import com.azortis.serverutilities.bukkit.settings.modules.CommandSettings;
+import com.azortis.serverutilities.bukkit.settings.common.CommandSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -60,14 +60,14 @@ public class MainCommand implements ICommandExecutor {
                 }else if(args.length == 1 && args[0].equals("reload")){
                     plugin.getSettingsManager().reloadSettingsFile();
                     plugin.getSettingsManager().reloadMessageFile();
-                    plugin.sendPlayerMessage(player, player, "pluginReloaded");
+                    plugin.sendPlayerMessage(player, player, "pluginReloaded", null);
                     return true;
                 }else {
-                    plugin.sendPlayerMessage(player, player, "invalidUsage");
+                    plugin.sendPlayerMessage(player, player, "invalidUsage", null);
                     return false;
                 }
             }else{
-                plugin.sendPlayerMessage(player, player, "noPermission");
+                plugin.sendPlayerMessage(player, player, "noPermission", null);
                 return false;
             }
         }

@@ -1,5 +1,5 @@
 /*
- * A handy set of utilities for your Minecraft servers
+ * A handy set of utilities for your Minecraft server
  *     Copyright (C) 2020  Azortis
  *
  *     This program is free software: you can redistribute it and/or modify
@@ -16,28 +16,28 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.azortis.serverutilities.bukkit.listeners;
+package com.azortis.serverutilities.bukkit.modules.spawn;
 
+import com.azortis.azortislib.command.Command;
+import com.azortis.azortislib.command.executors.ITabCompleter;
 import com.azortis.serverutilities.bukkit.ServerUtilities;
-import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.Location;
+import org.bukkit.command.CommandSender;
 
-public class PlayerRespawnListener implements Listener {
+import java.util.List;
 
-    private final ServerUtilities plugin;
+public class SpawnTabCompleter implements ITabCompleter {
 
-    public PlayerRespawnListener(ServerUtilities plugin){
+    private ServerUtilities plugin;
+    private SpawnModule spawnModule;
+
+    public SpawnTabCompleter(ServerUtilities plugin, SpawnModule spawnModule) {
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        this.spawnModule = spawnModule;
     }
 
-    /*@EventHandler()
-    public void onPlayerRespawn(PlayerRespawnEvent event){
-        if(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnTeleportSettings().getOnRespawn()){
-            event.getPlayer().teleport(plugin.getSettingsManager().getSettings().getSpawnSettings().getSpawnLocation());
-        }
-    }*/
-
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings, Location location) {
+        return null;
+    }
 }

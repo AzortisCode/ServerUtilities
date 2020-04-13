@@ -1,30 +1,31 @@
 {
   "spawnSettings": {
     "enabled": true,
-    "location": {
-      "world": "",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "yaw": 0,
-      "pitch": 0
-    },
-    "spawnTeleportSettings": {
-      "onFirstJoin": true,
-      "onJoin": true,
-      "onRespawn": false,
-      "onBelowY": {
-        "enabled": true,
-        "y": 0
-      }
+    "timoutSettings": {
+      "cancelTeleportOnDamage": true,
+      "cancelTeleportOnMove": true,
+      "applyOthersTimeoutOnSendOther": true,
+      "timeouts": [
+        {
+          "weight": 1,
+          "permission": "",
+          "time": 5
+        },
+        {
+          "weight": 2,
+          "permission": "serverutilities.spawn.timeout.admin",
+          "time": 0
+        }
+      ]
     },
     "commandSettings": {
       "enabled": true,
       "name": "spawn",
       "description": "To teleport to spawn",
-      "usage": "&c/spawn [set]",
+      "usage": "&c/spawn [spawnName|set|delete|send] <spawnName|playerName> <weight>",
       "aliases": [
-        "setspawn -f set"
+        "setspawn -f set",
+        "delspawn -f delete"
       ]
     }
   },
